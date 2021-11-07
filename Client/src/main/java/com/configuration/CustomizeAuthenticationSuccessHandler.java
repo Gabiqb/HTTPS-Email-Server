@@ -18,7 +18,7 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
         //Currently only auths the users with the role : USER
         for (GrantedAuthority auth : authentication.getAuthorities()) {
             if ((Roles.USER.toString()).equals(auth.getAuthority())) {
-                response.sendRedirect("/dashboard");
+                response.sendRedirect("/mail");
             }
         }
     }
