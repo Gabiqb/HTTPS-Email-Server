@@ -42,7 +42,7 @@
 <div class="main__body">
     <!-- Sidebar Starts -->
     <div class="sidebar">
-        <button class="sidebar__compose"><span class="material-icons"> add </span>Compose</button>
+        <button class="sidebar__compose" th:onclick=><span class="material-icons"> add </span>Compose</button>
         <div class="sidebarOption sidebarOption__active">
             <span class="material-icons"> inbox </span>
             <h3>Inbox</h3>
@@ -479,8 +479,36 @@
             <!-- Email Row Ends -->
         </div>
         <!-- Email List rows Ends -->
+        <div class = "modal-compose-message" >
+            <div class = "modal-header">
+                <div class = "x-button">
+                    <img src="https://www.pngkey.com/png/full/467-4671988_white-x-symbol-png.png" alt="x-close" width="16" height="16">
+                </div>
+            </div>
+
+            <div class = "modal-body">
+                <div class = "to-field">
+                    <input type="text" id="to-input-field" placeholder = "To">
+                </div>
+
+                <div class = "subject-field">
+                    <input type="text" id="subject-input-field" placeholder="Subject">
+                </div>
+
+                <div class = "text-field">
+                    <input type="text" id = "text-input-field" placeholder="Write your message here">
+                </div>
+            </div>
+
+            <div class = "modal-footer">
+                <div class = "send-button">
+                    <img src="https://cdn.icon-icons.com/icons2/1415/PNG/512/ic-send_97591.png" alt="send" width="20" height="20">
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Email List Ends -->
+
 </div>
 <!-- Main Body Ends -->
 </body>
