@@ -266,8 +266,22 @@ input {
 }
 
 .modal-compose-message{
+    display: none;
 
 }
+
+.modal-compose-messsage-internal{
+    display: flex;
+    position: fixed;
+    bottom: 6px;
+    z-index: 1041;
+    height: 468px;
+    width: 554px;
+    right: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .modal-header{
     display: flex;
