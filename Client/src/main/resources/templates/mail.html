@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google Font Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/mailStyle.css">
     <title>Mail</title>
 </head>
@@ -42,7 +48,7 @@
 <div class="main__body">
     <!-- Sidebar Starts -->
     <div class="sidebar">
-        <button class="sidebar__compose" th:onclick=><span class="material-icons"> add </span>Compose</button>
+        <button class="sidebar__compose" data-toggle="modal" data-target="#myModal" ><span class="material-icons"> add </span>Compose</button>
         <div class="sidebarOption sidebarOption__active">
             <span class="material-icons"> inbox </span>
             <h3>Inbox</h3>
@@ -479,9 +485,10 @@
             <!-- Email Row Ends -->
         </div>
         <!-- Email List rows Ends -->
-        <div class = "modal-compose-message" >
+
+        <div id="myModal" class = "modal-compose-message" aria-hidden="true" >
             <div class = "modal-header">
-                <div class = "x-button">
+                <div class = "x-button" data-toggle="modal" data-target="#myModal">
                     <img src="https://www.pngkey.com/png/full/467-4671988_white-x-symbol-png.png" alt="x-close" width="16" height="16">
                 </div>
             </div>
@@ -511,5 +518,8 @@
 
 </div>
 <!-- Main Body Ends -->
+
+
+
 </body>
 </html>
