@@ -28,5 +28,9 @@ public class MailController {
         return mailService.getMailsByReceiver(email);
     }
 
+    @RequestMapping("/getSentMails/{email}")
+    public List<Mail> getSentMails(@PathVariable("email") String email){
+        return mailService.getMailsBySender(email);
+    }
 
 }

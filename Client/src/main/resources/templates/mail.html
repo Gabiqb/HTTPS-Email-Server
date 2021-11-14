@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
     <link rel="stylesheet" href="/css/mailStyle.css">
     <title>Mail</title>
 </head>
@@ -54,12 +55,14 @@
     <!-- Sidebar Starts -->
     <div class="sidebar">
         <button class="sidebar__compose" data-toggle="modal" data-target="#myModal" ><span class="material-icons"> add </span>Compose</button>
-        <div class="sidebarOption sidebarOption__active">
+        <div th:onclick="showInbox()" id="inbox-button" class="sidebarOption sidebarOption__active">
+
             <span class="material-icons"> inbox </span>
             <h3>Inbox</h3>
+
         </div>
 
-        <div class="sidebarOption">
+        <div th:onclick="showSent()" id="sent-button" class = "sidebarOption">
             <span class="material-icons"> near_me </span>
             <h3>Sent</h3>
         </div>
@@ -83,12 +86,12 @@
              <h3 class="emailRow__title">Subject</h3>
 
         </div>
-        <div class="emailList__list">
+        <div id = "receivedMails" class="emailList__list">
             <!-- Email Row Starts -->
             <div class="emailRow" th:each="mail : ${mails}">
                 <div class="emailRow__options">
                     <input type="checkbox"/>
-                   
+
                 </div>
 
                 <h3 class="emailRow__title" th:text="${mail.from}"></h3>
@@ -105,6 +108,31 @@
 
 
         <!-- Email List rows Ends -->
+
+
+        </div>
+        <div id = "sentMails" class="sent-emailList__list" style="display: none">
+            <!-- Email Row Starts -->
+            <div class="emailRow" th:each="mail : ${sentMails}">
+                <div class="emailRow__options">
+                    <input type="checkbox"/>
+
+                </div>
+
+                <h3 class="emailRow__title" th:text="${mail.from}"></h3>
+
+                <div class="emailRow__message">
+                    <h4 th:text="${mail.subject}">
+
+                    </h4>
+                </div>
+
+                <p class="emailRow__time" th:text="${mail.date}"></p>
+            </div>
+            <!-- Email Row Ends -->
+
+
+            <!-- Email List rows Ends -->
 
 
         </div>

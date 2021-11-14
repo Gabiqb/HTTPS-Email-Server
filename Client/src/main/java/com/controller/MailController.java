@@ -33,6 +33,8 @@ public class MailController {
             modelAndView.addObject("composedMail",new Mail());
             ArrayList<Mail> mails = restTemplate.getForObject("https://localhost:8082/getMails/"+user.getEmail(),ArrayList.class);
             modelAndView.addObject("mails",mails);
+            ArrayList<Mail> sentMails = restTemplate.getForObject("https://localhost:8082/getSentMails/"+user.getEmail(),ArrayList.class);
+            modelAndView.addObject("sentMails", sentMails);
         } else {
             modelAndView.setViewName("redirect:/login");
         }

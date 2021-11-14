@@ -23,6 +23,10 @@ public class MailService {
         return mailRepo.findAllMailsByReceiver(mail);
     }
 
+    public List<Mail> getMailsBySender(String mail){
+        return mailRepo.findAllMailsBySender(mail);
+    }
+
     public void saveMail(Mail mail){
         mailRepo.save(mail);
     }
