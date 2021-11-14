@@ -50,7 +50,6 @@ public class MailController {
             composedMail.setFrom(user.getEmail());
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Calendar cal = Calendar.getInstance();
-            System.out.println(dateFormat.format(cal.getTime()));
             composedMail.setDate(dateFormat.format(cal.getTime()));
             restTemplate.postForObject("https://localhost:8082/saveMail",composedMail, Mail.class);
 
