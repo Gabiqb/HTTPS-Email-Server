@@ -1,4 +1,7 @@
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,9 +31,11 @@
     <div class="header__middle">
         <span class="material-icons"> search </span>
         <input type="text" placeholder="Search mail" />
-        <span class="material-icons"> arrow_drop_down </span>
-    </div>
 
+    </div>
+    <div>
+        <input type="image" src="/css/images/deleteBtn.png" name="deleteBtn" width="50" height="50" alt="deleteBtn"/>
+    </div>
     <div class="header__right">
         <span class="material-icons">
 
@@ -73,427 +78,42 @@
         <!-- Section Ends -->
 
         <!-- Email List rows starts -->
+        <div class="emailRowSection" >
+             <h3 class="emailRow__title">From</h3>
+             <h3 class="emailRow__title">Subject</h3>
+
+        </div>
         <div class="emailList__list">
             <!-- Email Row Starts -->
-            <div class="emailRow">
+            <div class="emailRow" th:each="mail : ${mails}">
                 <div class="emailRow__options">
                     <input type="checkbox"/>
                    
                 </div>
 
-                <h3 class="emailRow__title">YouTube</h3>
+                <h3 class="emailRow__title" th:text="${mail.from}"></h3>
 
                 <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
+                    <h4 th:text="${mail.subject}">
+
                     </h4>
                 </div>
 
-                <p class="emailRow__time">10pm</p>
+                <p class="emailRow__time">11:45</p>
             </div>
             <!-- Email Row Ends -->
 
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
 
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber<span class="emailRow__description">
-                  - on Your Channel Future Coders
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-                   
-                </div>
-
-                <h3 class="emailRow__title">Google</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        Login on New Device<span class="emailRow__description">
-                  - is this your Device ?
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">2am</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber<span class="emailRow__description">
-                  - on Your Channel Future Coders
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">Google</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        Login on New Device<span class="emailRow__description">
-                  - is this your Device ?
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">2am</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber<span class="emailRow__description">
-                  - on Your Channel Future Coders
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"  />
-                   
-                </div>
-
-                <h3 class="emailRow__title">Google</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        Login on New Device<span class="emailRow__description">
-                  - is this your Device ?
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">2am</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber<span class="emailRow__description">
-                  - on Your Channel Future Coders
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">Google</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        Login on New Device<span class="emailRow__description">
-                  - is this your Device ?
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">2am</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox"/>
-
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber
-                        <span class="emailRow__description"> - on Your Channel Future Coders </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">YouTube</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        You Got a New Subscriber<span class="emailRow__description">
-                  - on Your Channel Future Coders
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">10pm</p>
-            </div>
-            <!-- Email Row Ends -->
-
-            <!-- Email Row Starts -->
-            <div class="emailRow">
-                <div class="emailRow__options">
-                    <input type="checkbox" name="" id="" />
-                   
-                </div>
-
-                <h3 class="emailRow__title">Google</h3>
-
-                <div class="emailRow__message">
-                    <h4>
-                        Login on New Device<span class="emailRow__description">
-                  - is this your Device ?
-                </span>
-                    </h4>
-                </div>
-
-                <p class="emailRow__time">2am</p>
-            </div>
-            <!-- Email Row Ends -->
-        </div>
         <!-- Email List rows Ends -->
 
 
-    </div>
+        </div>
     <!-- Email List Ends -->
 
+    </div>
 </div>
 <!-- Main Body Ends -->
 
-<div>
 <div id="myModal" class = "modal-compose-message" aria-hidden="true" >
     <div class = "modal-compose-messsage-internal">
         <div class = "modal-header">
@@ -501,32 +121,31 @@
                 <img src="https://www.pngkey.com/png/full/467-4671988_white-x-symbol-png.png" alt="x-close" width="16" height="16">
             </div>
         </div>
-
-        <div class = "modal-body">
+        <form action="#" class="modal-body" th:action="@{/sendMail}" th:object="${composedMail}" method="GET" onsubmit="alert('The mail has been sent');">
             <div class = "to-field">
-                <input type="text" id="to-input-field" placeholder = "To">
+                <input type="email" id="to-input-field" name="to" placeholder = "To" required="" th:field="*{to}">
             </div>
 
             <div class = "subject-field">
-                <input type="text" id="subject-input-field" placeholder="Subject">
+                <input type="text" id="subject-input-field" name="subject" placeholder="Subject" th:field="*{subject}">
             </div>
 
             <div class = "text-field">
-                <textarea type="" id = "text-input-field" placeholder="Write your message here"></textarea>
+                <textarea type="" id = "text-input-field" name="text" placeholder="Write your message here" th:field="*{text}"></textarea >
             </div>
-        </div>
+            <div class = "modal-footer">
+                <button class = "send-button" type="submit">
+                    <img src="https://cdn.icon-icons.com/icons2/1415/PNG/512/ic-send_97591.png" alt="send" width="20" height="20">
+                </button>
+            </div>
+        </form>
 
-        <div class = "modal-footer">
-            <div class = "send-button">
-                <img src="https://cdn.icon-icons.com/icons2/1415/PNG/512/ic-send_97591.png" alt="send" width="20" height="20">
-            </div>
+
         </div>
     </div>
 
 </div>
 
-
-
-
 </body>
+
 </html>

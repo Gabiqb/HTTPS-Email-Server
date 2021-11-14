@@ -32,7 +32,7 @@ import java.security.cert.CertificateException;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("com.login.configuration")
+@ComponentScan("com.configuration")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${trust-store}")
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             http
                     .authorizeRequests()
-                    .antMatchers("/dashboard").permitAll()
+                    .antMatchers("/mail").permitAll()
                     .and()
                     .formLogin().successHandler(customizeAuthenticationSuccessHandler)
                     .loginPage("/login")

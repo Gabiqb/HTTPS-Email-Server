@@ -5,9 +5,6 @@ import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Document(collection = "mails")
 public class Mail {
     @Id
@@ -18,15 +15,6 @@ public class Mail {
     private String to;
     private String subject;
     private String text;
-    private String date;
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getId() {
         return id;

@@ -24,7 +24,7 @@ public class LoginController {
                modelAndView.addObject("currentUser", user);
                modelAndView.addObject("fullName", "Welcome " + user.getName());
                modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-               modelAndView.setViewName("dashboard");
+               modelAndView.setViewName("mail");
                return modelAndView;
            } else {
 
@@ -46,7 +46,7 @@ public class LoginController {
                 modelAndView.addObject("currentUser", user);
                 modelAndView.addObject("fullName", "Welcome " + user.getName());
                 modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-                modelAndView.setViewName("dashboard");
+                modelAndView.setViewName("mail");
                 return modelAndView;
             } else {
                 ModelAndView modelAndView = new ModelAndView();
@@ -69,11 +69,11 @@ public class LoginController {
                 modelAndView.addObject("currentUser", user);
                 modelAndView.addObject("fullName", "Welcome " + user.getName());
                 modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-                modelAndView.setViewName("dashboard");
+                modelAndView.setViewName("mail");
                 return modelAndView;
             } else {
                 ModelAndView modelAndView = new ModelAndView();
-                modelAndView.setViewName("login");
+                modelAndView.setViewName("redirect:/login");
                 return modelAndView;
             }
         }

@@ -11,7 +11,6 @@ public class PageConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry)
     {
         registry.addViewController("/").setViewName("login");
-        registry.addViewController("/dashboard").setViewName("dashboard");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/signup").setViewName("signup");
         registry.addViewController("/mail").setViewName("mail");
