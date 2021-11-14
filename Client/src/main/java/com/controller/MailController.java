@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 @Controller
 public class MailController {
@@ -45,6 +48,10 @@ public class MailController {
             modelAndView.setViewName("redirect:/mail");
             modelAndView.addObject("currentUser",user);
             composedMail.setFrom(user.getEmail());
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            System.out.println(dateFormat.format(cal.getTime()));
+            composedMail.setDate(dateFormat.format(cal.getTime()));
             restTemplate.postForObject("https://localhost:8082/saveMail",composedMail, Mail.class);
 
         } else {
