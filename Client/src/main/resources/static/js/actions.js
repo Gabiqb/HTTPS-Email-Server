@@ -17,3 +17,18 @@ function showSent(){
     $('#inbox-button').removeClass("sidebarOption__active");
 }
 
+$(document).ready(function() {
+    $('#viewMailModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var sender = button.data('sender') // Extract info from data-* attributes
+        var subject = button.data('subject')
+        var text = button.data('text')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('Mail from ' + sender)
+        modal.find('#senderLabel').text('Sender: ' + sender)
+        modal.find('#subjectLabel').text('Subject: ' + subject)
+        modal.find('#message-text').text(text)
+    })
+})
