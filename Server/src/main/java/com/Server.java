@@ -7,6 +7,7 @@ import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,5 +53,13 @@ public class Server {
 		connector.setRedirectPort(8082);
 		return connector;
 	}
-
+	@Bean
+	public FilterRegistrationBean corsFilterRegistration() {
+		FilterRegistrationBean registrationBean =
+				new FilterRegistrationBean(new CORSFilter());
+		registrationBean.setName("CORS Filter");
+		registrationBean.addUrlPatterns("/*");
+		registrationBean.setOrder(1);
+		return registrationBean;
+	}
 }

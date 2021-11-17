@@ -32,6 +32,7 @@ public class MailService {
     }
 
     public void deleteMails(List<String> mailsToDelete) {
+
         for(String id:mailsToDelete){
             mailRepo.deleteById(id);
         }

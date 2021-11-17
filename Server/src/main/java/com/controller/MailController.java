@@ -18,7 +18,7 @@ public class MailController {
     @Autowired
     private MailService mailService;
 
-   @PostMapping(value = "/saveMail", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/saveMail", consumes = "application/json", produces = "application/json")
     public void sendMail(@RequestBody Mail mail){
        mailService.saveMail(mail);
    }

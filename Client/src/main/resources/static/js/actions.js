@@ -75,7 +75,6 @@ $(document).ready(function() {
 
         console.log(checkedMailsArray)
 
-
         $.ajax({
             url: "https://localhost:8082/deleteMails",
             type: "POST",
