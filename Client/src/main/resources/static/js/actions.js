@@ -54,3 +54,38 @@ $(document).ready(function() {
         });
     });
 })
+
+$(document).ready(function() {
+
+    $('#deleteButton').click(function() {
+
+        /*$.ajax({
+            url: "https://localhost:8082/deleteMails/",
+            type: "post",
+            data: $('.mail-checkbox:checked').serialize(),
+            success: function(data) {
+                console.log(data);
+            }
+        });*/
+
+        var checkedMailsArray = []
+        $("input:checkbox:checked").each(function(){
+            checkedMailsArray.push($(this).val());
+        });
+
+        console.log(checkedMailsArray)
+
+
+        $.ajax({
+            url: "https://localhost:8082/deleteMails",
+            type: "POST",
+            dataType: 'json',
+            data: JSON.stringify(checkedMailsArray),
+            succes: function(response){
+                location.reload();
+            }
+        })
+
+
+    });
+})
