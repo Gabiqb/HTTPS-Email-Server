@@ -1,20 +1,27 @@
 function showInbox() {
+
     var inbox = document.getElementById('receivedMails');
     inbox.style.display = "block";
     var sent = document.getElementById('sentMails');
     sent.style.display = "none";
+    const fromField = document.querySelector('#fromField');
+    fromField.textContent="From";
     $('#inbox-button').addClass("sidebarOption__active");
     $('#sent-button').removeClass("sidebarOption__active");
+
 }
 
 function showSent(){
+
     var inbox = document.getElementById('receivedMails');
     inbox.style.display = "none";
     var sent = document.getElementById('sentMails');
     sent.style.display = "block";
-
+    const fromField = document.querySelector('#fromField');
+    fromField.textContent="To";
     $('#sent-button').addClass("sidebarOption__active");
     $('#inbox-button').removeClass("sidebarOption__active");
+
 }
 
 $(document).ready(function() {
