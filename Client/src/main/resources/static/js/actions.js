@@ -42,4 +42,15 @@ $(document).ready(function() {
         modal.find('#timeLabel').text(time)
         modal.find('#message-text').text(text)
     })
+
+
+})
+
+$(document).ready(function() {
+    $("#search-text").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".emailRow").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 })
