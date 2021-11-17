@@ -1,27 +1,28 @@
+
 function showInbox() {
-
-    var inbox = document.getElementById('receivedMails');
-    inbox.style.display = "block";
-    var sent = document.getElementById('sentMails');
-    sent.style.display = "none";
-    const fromField = document.querySelector('#fromField');
-    fromField.textContent="From";
-    $('#inbox-button').addClass("sidebarOption__active");
-    $('#sent-button').removeClass("sidebarOption__active");
-
+        var inbox = document.getElementById('receivedMails');
+        inbox.style.display = "block";
+        var sent = document.getElementById('sentMails');
+        sent.style.display = "none";
+        const fromField = document.querySelector('#fromField');
+        fromField.textContent = "From";
+        $('#inbox-button').addClass("sidebarOption__active");
+        $('#sent-button').removeClass("sidebarOption__active");
+        localStorage.setItem("tab","Inbox");
 }
 
-function showSent(){
+function showSent() {
 
-    var inbox = document.getElementById('receivedMails');
-    inbox.style.display = "none";
-    var sent = document.getElementById('sentMails');
-    sent.style.display = "block";
-    const fromField = document.querySelector('#fromField');
-    fromField.textContent="To";
-    $('#sent-button').addClass("sidebarOption__active");
-    $('#inbox-button').removeClass("sidebarOption__active");
+        var inbox = document.getElementById('receivedMails');
+        inbox.style.display = "none";
+        var sent = document.getElementById('sentMails');
+        sent.style.display = "block";
+        const fromField = document.querySelector('#fromField');
+        fromField.textContent = "To";
+        $('#sent-button').addClass("sidebarOption__active");
+        $('#inbox-button').removeClass("sidebarOption__active");
 
+        localStorage.setItem("tab","Sent");
 }
 
 $(document).ready(function() {
@@ -43,7 +44,6 @@ $(document).ready(function() {
         modal.find('#message-text').text(text)
     })
 
-
 })
 
 $(document).ready(function() {
@@ -59,31 +59,30 @@ $(document).ready(function() {
 
     $('#deleteButton').click(function() {
 
-        /*$.ajax({
-            url: "https://localhost:8082/deleteMails/",
-            type: "post",
-            data: $('.mail-checkbox:checked').serialize(),
-            success: function(data) {
-                console.log(data);
-            }
-        });*/
-
         var checkedMailsArray = []
         $("input:checkbox:checked").each(function(){
             checkedMailsArray.push($(this).val());
         });
 
         console.log(checkedMailsArray)
-
+        var tab;
         $.ajax({
+
             url: "https://localhost:8082/deleteMails",
             type: "POST",
-            dataType: 'json',
+            contentType: "application/json",
             data: JSON.stringify(checkedMailsArray),
-            succes: function(response){
-                location.reload();
-            }
+            success:[function ()
+            {
+                if(checkedMailsArray.length > 0) {
+                   if(localStorage.getItem("tab")==="Sent")
+                      $( "#sentMails" ).load(window.location.href + " #sentMails" );
+                   else
+                       $( "#receivedMails" ).load(window.location.href + " #receivedMails" );
+                }
+            }]
         })
+
 
 
     });

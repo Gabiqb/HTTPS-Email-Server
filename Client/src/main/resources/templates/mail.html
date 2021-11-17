@@ -124,7 +124,7 @@
             <!-- Email Row Starts -->
             <div class="emailRow" th:each="mail : ${sentMails}">
                 <div class="emailRow__options">
-                    <input type="checkbox"/>
+                    <input type="checkbox" th:attr="value=${mail.id}"/>
 
                 </div>
 

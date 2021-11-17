@@ -33,7 +33,7 @@ public class MailController {
         return mailService.getMailsBySender(email);
     }
 
-    @PostMapping(value = "/deleteMails", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/deleteMails", consumes = "application/json")
     public void deleteMails(@RequestBody List<String> mailsToDelete){
         mailService.deleteMails(mailsToDelete);
     }
