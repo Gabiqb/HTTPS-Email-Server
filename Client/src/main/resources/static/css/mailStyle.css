@@ -2,7 +2,11 @@
     margin: 0;
     padding: 0;
 }
-
+body {
+    height: 100%;
+    background-color: #140152;
+    color: floralwhite;
+}
 /* Header */
 .header__left img {
     object-fit: contain;
@@ -31,7 +35,7 @@
     display: flex;
     flex: 0.7;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: rgb(30, 32, 33);
     padding: 10px;
     border-radius: 5px;
 }
@@ -74,7 +78,7 @@
     color: gray;
     padding: 15px;
     border-radius: 30px;
-    background-color: white;
+    background-color: rgb(24, 26, 27);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -115,7 +119,7 @@
 .sidebarOption__active,
 .sidebarOption__active h3,
 .sidebarOption__active .material-icons {
-    background-color: #fcecec;
+    background-color: rgb(55, 9, 9);
     color: #c04b37;
     font-weight: 800;
 }
@@ -233,6 +237,7 @@ input {
     height: 50px;
     z-index: 999;
     flex:0.3;
+    color: rgb(209,205,199);
 }
 
 .emailRow:hover {
@@ -300,7 +305,11 @@ h3{
     flex-direction: column;
     justify-content: space-between;
 }
-
+#message-text{
+    height : 230px;
+    color: cornsilk;
+    background-color: #202124;
+}
 
 .modal-header{
     display: flex;
@@ -313,7 +322,7 @@ h3{
 .modal-body{
     display: flex;
     flex-grow: 20;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(24,26, 27);
 }
 
 .modal-footer{
@@ -321,7 +330,7 @@ h3{
     flex-grow: 1;
     align-items: center;
     justify-content: flex-start;
-    background-color: #ffffff;
+    background-color: rgb(24,26, 27);
 }
 
 .x-button{
@@ -345,6 +354,8 @@ h3{
     align-items: center;
     width: 100%;
     flex-grow: 1;
+    background-color: #202124;
+    color: cornsilk;
 }
 
 #to-input-field{
@@ -357,18 +368,32 @@ h3{
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+    background-color: #202124;
+    color: cornsilk;
 }
 
 #subject-input-field{
     width: 97%;
 }
-
+#to-input-field{
+    background-color: #202124;
+    color: cornsilk;
+}
+#subject-input-field{
+    background-color: #202124;
+    color: cornsilk;
+}
+#text-input-field{
+    background-color: #202124;
+    color: cornsilk;
+}
 .text-field{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     flex-grow: 24;
+
 }
 
 #text-input-field{

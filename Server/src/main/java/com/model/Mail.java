@@ -5,9 +5,6 @@ import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Document(collection = "mails")
 public class Mail {
     @Id

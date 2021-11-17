@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.model.User;
-import com.model.UserPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,13 +15,10 @@ public class SignUpController {
     public Object signup() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!auth.getPrincipal().toString().equals("anonymousUser")) {
-            ModelAndView modelAndView=new ModelAndView();
-            User user= ((UserPrincipal) auth.getPrincipal()).getUser();
-            modelAndView.addObject("currentUser", user);
-            modelAndView.addObject("fullName", "Welcome" + user.getName());
-            modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-            modelAndView.setViewName("dashboard");
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("redirect:mail");
             return modelAndView;
+
         } else
         {
             ModelAndView modelAndView = new ModelAndView();

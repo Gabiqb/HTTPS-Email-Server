@@ -1,7 +1,7 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
->
+      >
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,9 +22,8 @@
 <!-- Header Starts -->
 <div class="header">
     <div class="header__left">
-        <span class="material-icons"> menu </span>
         <img
-                src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202010/Google_Gmail_New_Logo_India_To_1200x768.jpeg?WgdQ3Tx7r4ZssTpgfxm1Iwb5KMAG8S4A&size=1200:675"
+                src="/css/images/mailIcon.png"
                 alt=""
         />
     </div>
@@ -35,17 +34,24 @@
 
     </div>
     <div>
-        <input id="deleteButton" type="image" src="/css/images/deleteBtn.png" name="deleteBtn" width="50" height="50" alt="deleteBtn"/>
+        <input id="deleteButton" type="image" src="/css/images/deleteBtn.png" name="deleteBtn" width="40" height="50" alt="deleteBtn"/>
     </div>
     <div class="header__right">
-        <span class="material-icons">
 
-            account_circle </span>
-        <span>
-              <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out"/>
-                </form>
-        </span>
+             <div class="clickable-area"
+                  data-toggle="modal"
+                  data-target="#viewAccountInfoModal"
+                  th:attr="
+                     data-name=${currentUser.name},
+                     data-email=${currentUser.email}
+                         ">
+                    <span class="material-icons" style="width:20px;
+                                                        margin-right: 20px;
+                        ">
+                          account_circle
+                    </span>
+             </div>
+
     </div>
 </div>
 <!-- Header Ends -->
@@ -97,11 +103,13 @@
                      data-toggle="modal"
                      data-target="#viewMailModal"
                      th:attr="
+                     data-id=${mail.id},
                      data-sender=${mail.from},
                      data-receiver=${mail.to},
                      data-subject=${mail.subject},
                      data-text=${mail.text},
-                     data-time=${mail.date}"
+                     data-time=${mail.date}
+                     "
                 >
                 <h3 class="emailRow__title" th:text="${mail.from}"></h3>
 
@@ -128,7 +136,15 @@
 
                 </div>
 
-                <div class="clickable-area" data-toggle="modal" data-target="#viewMailModal" th:attr="data-sender=${mail.from}, data-receiver=${mail.to}, data-subject=${mail.subject}, data-text=${mail.text}, data-time=${mail.date}">
+                <div class="clickable-area" data-toggle="modal" data-target="#viewMailModal"
+                     th:attr="
+                     data-id=${mail.id},
+                     data-sender=${mail.from},
+                      data-receiver=${mail.to},
+                      data-subject=${mail.subject},
+                       data-text=${mail.text},
+                       data-time=${mail.date}
+                      ">
                 <h3 class="emailRow__title" th:text="${mail.to}"></h3>
 
                 <div class="emailRow__message">
@@ -218,6 +234,39 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="viewAccountInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"  style="color: #ffffff">Account Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:#ffffff">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form style="width: 100%">
+                    <div class="form-group">
+                        <label id="nameLabel" class="col-form-label">Name:</label>
+                    </div>
+                    <div class="form-group">
+                        <label id="emailLabel" class="col-form-label">E-mail:</label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-secondary"  >Sign Out
+                </button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 
 </div>
 

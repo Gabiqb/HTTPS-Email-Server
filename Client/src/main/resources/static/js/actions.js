@@ -33,6 +33,7 @@ $(document).ready(function() {
         var subject = button.data('subject')
         var text = button.data('text')
         var time = button.data('time')
+        var id = button.data('id')
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
@@ -42,6 +43,21 @@ $(document).ready(function() {
         modal.find('#subjectLabel').text('Subject: ' + subject)
         modal.find('#timeLabel').text(time)
         modal.find('#message-text').text(text)
+
+    })
+    $('#viewAccountInfoModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var name = button.data('name') // Extract info from data-* attributes
+        var email = button.data('email')
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('Account Information')
+        modal.find('#emailLabel').text('Email: ' + email)
+        modal.find('#nameLabel').text('Name: ' + name)
+
+
     })
 
 })
@@ -62,10 +78,11 @@ $(document).ready(function() {
         var checkedMailsArray = []
         $("input:checkbox:checked").each(function(){
             checkedMailsArray.push($(this).val());
+
         });
 
         console.log(checkedMailsArray)
-        var tab;
+
         $.ajax({
 
             url: "https://localhost:8082/deleteMails",
@@ -74,12 +91,9 @@ $(document).ready(function() {
             data: JSON.stringify(checkedMailsArray),
             success:[function ()
             {
-                if(checkedMailsArray.length > 0) {
-                   if(localStorage.getItem("tab")==="Sent")
-                      $( "#sentMails" ).load(window.location.href + " #sentMails" );
-                   else
-                       $( "#receivedMails" ).load(window.location.href + " #receivedMails" );
-                }
+                $("input:checkbox:checked").each(function(){
+                    $(this).closest(".emailRow").remove();
+                });
             }]
         })
 
