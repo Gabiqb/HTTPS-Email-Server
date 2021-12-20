@@ -16,6 +16,15 @@ public class Mail {
     private String subject;
     private String text;
     private String date;
+    private boolean draft;
+
+    public boolean isDraft() {
+        return draft;
+    }
+
+    public void setDraft(boolean draft) {
+        this.draft = draft;
+    }
 
     public String getDate() {
         return date;

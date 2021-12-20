@@ -11,10 +11,14 @@ import java.util.List;
 @Repository
 public interface MailRepository extends MongoRepository<Mail, String> {
 
-    @Query("{to:'?0'}")
+    @Query("{to:'?0',draft:false}")
     List<Mail> findAllMailsByReceiver(String mail);
 
-    @Query("{from:'?0'}")
+    @Query("{from:'?0',draft:false}")
     List<Mail> findAllMailsBySender(String mail);
+
+    @Query("{to:'?0',draft:true}")
+    List<Mail> findAllDraftMails(String mail);
+
 
 }

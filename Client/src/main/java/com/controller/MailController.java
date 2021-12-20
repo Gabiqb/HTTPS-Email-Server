@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,28 +34,34 @@ public class MailController {
             modelAndView.addObject("mails",mails);
             ArrayList<Mail> sentMails = restTemplate.getForObject("https://localhost:8082/getSentMails/"+user.getEmail(),ArrayList.class);
             modelAndView.addObject("sentMails", sentMails);
+            ArrayList<Mail> draftMails = restTemplate.getForObject("https://localhost:8082/getDraftMails/"+user.getEmail(),ArrayList.class);
+            modelAndView.addObject("draftMails", draftMails);
         } else {
-            modelAndView.setViewName("redirect:/login");
+            modelAndView.setViewName("redirect:login");
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/sendMail")
-    public ModelAndView sendMail(Mail composedMail) {
+    @RequestMapping(value = "/sendMail",params="action")
+    public ModelAndView sendMail(Mail composedMail, @RequestParam(value="action") String action) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = restTemplate.getForObject("https://localhost:8082/get/" + auth.getName(), User.class);
         if (!auth.getPrincipal().toString().equals("anonymousUser")) {
-            modelAndView.setViewName("redirect:/mail");
+            modelAndView.setViewName("redirect:mail");
             modelAndView.addObject("currentUser",user);
             composedMail.setFrom(user.getEmail());
+            if(action.equals("draft"))
+                composedMail.setDraft(true);
+            else
+                composedMail.setDraft(false);
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             composedMail.setDate(dateFormat.format(cal.getTime()));
             restTemplate.postForObject("https://localhost:8082/saveMail",composedMail, Mail.class);
 
         } else {
-            modelAndView.setViewName("redirect:/login");
+            modelAndView.setViewName("redirect:login");
         }
         return modelAndView;
     }

@@ -8,16 +8,18 @@
     <title>Signup</title>
     <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">HTTPS - E-Mail Application</title>
     <meta name="description" content=""/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel = "icon" href ="/css/images/mailIco.png"
-          type = "image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="icon" href="/css/images/mailIco.png"
+          type="image/x-icon">
 </head>
 <body>
 <div layout:fragment="content">
     <form class="form-signin" th:action="@{/signup}" method="post">
-        <img id="agentlog" class="mb-4" src="/css/images/Agent-Login.jpg" alt="" width="300" height="100" />
+        <img id="agentlog" class="mb-4" src="/css/images/Agent-Login.jpg" alt="" width="300" height="100"/>
         <h1 class="h3 mb-3 font-weight-normal" id="signuplabel">Signup Here</h1>
         <div th:if="${param.error}">
             Invalid email and password.
@@ -26,17 +28,21 @@
             You have been logged out.
         </div>
         <div th:if="${param.successfulMessage}">
-             User registered successfully.
+            User registered successfully.
         </div>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" />
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
-        <label for="inputFullname" class="sr-only">Full Name</label>
-        <input type="text" name="fullName" id="inputFullname" class="form-control" placeholder="Full-name" required="" />
+
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required=""/>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+               required=""/>
+        <input type="text" name="name" id="inputFullName" class="form-control" placeholder="Full-name" required=""/>
+        <input type="text" name="address" id="inputAddress" class="form-control" placeholder="Address" required=""/>
+        <input type="text" name="telephone" id="inputTelephone" class="form-control" placeholder="Telephone number"
+               required=""/>
+        <input type="number" name="age" id="inputAge" class="form-control" placeholder="Age" required=""/>
+        <input type="text" name="gender" id="inputGender" class="form-control" placeholder="Gender" required=""/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
     </form>
-    <form class="form-signin"  th:action="@{/login}"  method="get">
+    <form class="form-signin" th:action="@{/login}" method="get">
         <button class="btn btn-md btn-success btn-block" type="Submit">Sign In</button>
     </form>
 </div>

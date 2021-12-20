@@ -1,10 +1,10 @@
 package com.model;
 
+import com.misc.Roles;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,18 +17,47 @@ public class User {
     private String email;
     private String password;
     private String name;
+    private String address;
+    private String telephone;
+    private int age;
+    private String gender;
     private boolean enabled;
+    private Set<Roles> roles=new HashSet<>();
 
     public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public String getAddress() {
+        return address;
     }
 
-    public Set<String> getRoles() {
-        return roles;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getId() {
@@ -39,25 +68,24 @@ public class User {
         this.id = id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<Roles> roles) {
         this.roles = roles;
     }
 
-    public String getName() {
-        return name;
+    public Set<Roles> getRoles() {
+        return roles;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private Set<String> roles=new HashSet<>();
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -68,4 +96,11 @@ public class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

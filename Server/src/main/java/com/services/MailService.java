@@ -15,21 +15,15 @@ public class MailService {
     @Autowired
     private MailRepository mailRepo;
 
+    public List<Mail> getMailsByReceiver(String mail){   return mailRepo.findAllMailsByReceiver(mail);}
 
-    public List<Mail> getMailsByReceiver(String mail){
-        return mailRepo.findAllMailsByReceiver(mail);
-    }
-
-    public List<Mail> getMailsBySender(String mail){
-        return mailRepo.findAllMailsBySender(mail);
-    }
-
+    public List<Mail> getMailsBySender(String mail) { return mailRepo.findAllMailsBySender(mail); }
+    public List<Mail> getDraftMails(String mail){  return mailRepo.findAllDraftMails(mail); }
     public void saveMail(Mail mail){
         mailRepo.save(mail);
     }
 
     public void deleteMails(List<String> mailsToDelete) {
-
         for(String id:mailsToDelete){
             mailRepo.deleteById(id);
         }

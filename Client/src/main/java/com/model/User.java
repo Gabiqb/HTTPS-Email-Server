@@ -17,11 +17,47 @@ public class User {
     private String email;
     private String password;
     private String name;
+    private String address;
+    private String telephone;
+    private int age;
+    private String gender;
     private boolean enabled;
     private Set<Roles> roles=new HashSet<>();
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getId() {

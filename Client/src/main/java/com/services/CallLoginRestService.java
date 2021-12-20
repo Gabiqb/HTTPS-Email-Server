@@ -43,7 +43,7 @@ public class CallLoginRestService implements UserDetailsService {
         }
         catch(Exception e)
         {
-            System.out.println("Check web-page");
+
             return new UserPrincipal(new User());
         }
 

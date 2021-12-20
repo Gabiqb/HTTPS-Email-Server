@@ -18,23 +18,22 @@ public class SignUpPostController {
     @Autowired
     private RestTemplate restTemplate;
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@ModelAttribute("fullName") String name, User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(User user, BindingResult bindingResult) {
 
         ModelAndView modelAndView = new ModelAndView();
         HttpStatus httpStatus = restTemplate.getForObject("https://localhost:8082/" + user.getEmail(), HttpStatus.class);
         if (httpStatus == HttpStatus.ACCEPTED) {
-            user.setName(name);
             user.getRoles().add(Roles.USER);
             restTemplate.postForObject("https://localhost:8082/signup/" + user.getEmail(), user, User.class);
             modelAndView.addObject("successMessage", "User has been registered succesfully :)");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("login");
+            modelAndView.setViewName("redirect:login");
         } else {
             bindingResult
                     .rejectValue("email", "error.user",
                             "There is already a user registered with the email provided");
             if (bindingResult.hasErrors()) {
-                modelAndView.setViewName("signup");
+                modelAndView.setViewName("redirect:signup");
             }
         }
         return modelAndView;

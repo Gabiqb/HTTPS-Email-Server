@@ -1,5 +1,6 @@
 package com.services;
 
+import com.misc.Roles;
 import com.model.User;
 import com.repositories.UserRepository;
 
@@ -26,13 +27,10 @@ public class UserService {
     public void saveUser(User user)
     {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.getRoles().add(Roles.USER);
         user.setEnabled(true);
         userRepo.save(user);
     }
-
-
-
-
 
 }
 

@@ -60,7 +60,7 @@ public class LoginController {
                 return modelAndView;
             } else {
                 ModelAndView modelAndView = new ModelAndView();
-                modelAndView.setViewName("redirect:/login");
+                modelAndView.setViewName("redirect:login");
                 return modelAndView;
             }
         }

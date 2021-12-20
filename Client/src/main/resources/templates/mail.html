@@ -47,7 +47,11 @@
                   data-target="#viewAccountInfoModal"
                   th:attr="
                      data-name=${currentUser.name},
-                     data-email=${currentUser.email}
+                     data-email=${currentUser.email},
+                     data-address=${currentUser.address},
+                     data-telephone=${currentUser.telephone},
+                     data-age=${currentUser.age},
+                     data-gender=${currentUser.gender}
                          ">
                     <span class="material-icons" style="width:20px;
                                                         margin-right: 20px;
@@ -77,18 +81,16 @@
             <h3>Sent</h3>
         </div>
 
+        <div th:onclick="showDrafts()" id="draft-button" class = "sidebarOption">
+            <span class="material-icons"> drafts </span>
+            <h3>Drafts</h3>
+        </div>
+
     </div>
     <!-- Sidebar Ends -->
 
     <!-- Email List Starts -->
     <div class="emailList">
-        <!-- Settings Starts -->
-
-        <!-- Settings Ends -->
-
-        <!-- Section Starts -->
-
-        <!-- Section Ends -->
 
         <!-- Email List rows starts -->
         <div class="emailRowSection" >
@@ -126,10 +128,7 @@
             </div>
                 </div>
             <!-- Email Row Ends -->
-
-
         <!-- Email List rows Ends -->
-
 
         </div>
         <div id = "sentMails" class="sent-emailList__list" style="display: none">
@@ -163,7 +162,36 @@
             <!-- Email Row Ends -->
 
 
-            <!-- Email List rows Ends -->
+        </div>
+
+        <div id = "draftMails" class="sent-emailList__list" style="display: none">
+            <!-- Email Row Starts -->
+            <div class="emailRow" th:each="mail : ${draftMails}">
+                <div class="emailRow__options">
+                    <input type="checkbox" th:attr="value=${mail.id}"/>
+
+                </div>
+
+                <div class="clickable-area" data-toggle="modal" data-target="#myModal"
+                     th:attr="
+                     data-id=${mail.id},
+                      data-receiver=${mail.to},
+                      data-subject=${mail.subject},
+                       data-text=${mail.text}
+
+                      ">
+                    <h3 class="emailRow__title" th:text="${mail.to}"></h3>
+
+                    <div class="emailRow__message">
+                        <h3 th:text="${mail.subject}">
+
+                        </h3>
+                    </div>
+
+                    <p class="emailRow__time" th:text="${mail.date}"></p>
+                </div>
+            </div>
+            <!-- Email Row Ends -->
 
 
         </div>
@@ -173,14 +201,16 @@
 </div>
 <!-- Main Body Ends -->
 
-<div id="myModal" class = "modal-compose-message" aria-hidden="true" >
-    <div class = "modal-compose-messsage-internal">
+<div id="myModal" class = "modal-compose-message" aria-hidden="false"   >
+    <div class = "modal-compose-message-internal">
+        <form id="sendForm" action="#" class="modal-body" th:action="@{/sendMail}" th:object="${composedMail}" method="GET"
+             >
         <div class = "modal-header">
-            <div class = "x-button" data-toggle="modal" data-target="#myModal" style="cursor:pointer">
-                <img src="https://www.pngkey.com/png/full/467-4671988_white-x-symbol-png.png" alt="x-close" width="16" height="16">
-            </div>
+            <button id="xButton" name="action" value="draft" class = "modal-header" data-toggle="modal" data-target="#myModal" style="cursor:pointer">
+                <img src="https://www.pngkey.com/png/full/467-4671988_white-x-symbol-png.png" alt="x-close" width="10" height="10">
+            </button>
         </div>
-        <form action="#" class="modal-body" th:action="@{/sendMail}" th:object="${composedMail}" method="GET" onsubmit="alert('The mail has been sent');">
+            <input type="hidden" id="draftID" th:field="*{id}">
             <div class = "to-field">
                 <input type="email" id="to-input-field" name="to" placeholder = "To" required="" th:field="*{to}">
             </div>
@@ -193,14 +223,13 @@
                 <textarea type="" id = "text-input-field" name="text" placeholder="Write your message here" th:field="*{text}"></textarea >
             </div>
             <div class = "modal-footer">
-                <button class = "send-button" type="submit">
-                    <img src="https://cdn.icon-icons.com/icons2/1415/PNG/512/ic-send_97591.png" alt="send" width="20" height="20">
+                <button id="sendButton" class = "material-icons" type="submit" name="action" value="save">
+                    send
                 </button>
             </div>
         </form>
-
-
         </div>
+
     </div>
 
 <div class="modal fade" id="viewMailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -250,12 +279,23 @@
             <div class="modal-body">
                 <form style="width: 100%">
                     <div class="form-group">
-                        <label id="nameLabel" class="col-form-label">Name:</label>
+                        <label id="nameLabel" class="col-form-label"></label>
                     </div>
                     <div class="form-group">
-                        <label id="emailLabel" class="col-form-label">E-mail:</label>
+                        <label id="emailLabel" class="col-form-label"></label>
                     </div>
-
+                    <div class="form-group">
+                        <label id="addressLabel" class="col-form-label"></label>
+                    </div>
+                    <div class="form-group">
+                        <label id="telephoneLabel" class="col-form-label"></label>
+                    </div>
+                    <div class="form-group">
+                        <label id="ageLabel" class="col-form-label"></label>
+                    </div>
+                    <div class="form-group">
+                        <label id="genderLabel" class="col-form-label"></label>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
