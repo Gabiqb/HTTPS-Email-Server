@@ -26,8 +26,9 @@ class ServerTests {
 	@Autowired
 	private VerifyExistenceController verifyExistenceController;
 
-	/*
-       This test verifies if the api link localhost/{email} returns a Htpp status code as "ACCEPTED" if an user tries to register with an email
+	/**
+       This test verifies if the api link localhost/{email} returns an HTTP status code as "ACCEPTED"
+	   if an user tries to register with an email
        that doesn't exist and "IM_USED" if the email already exists in the database.
     */
 	@Test
@@ -38,9 +39,10 @@ class ServerTests {
 		 assertEquals(httpStatus,HttpStatus.IM_USED);
 		 assertEquals(httpStatus1,HttpStatus.ACCEPTED);
 	}
-	/*
-		This test verifies if the api link localhost/get/{email} return the wanted user as a user form, it only checks the password and the email.
-	 */
+	/**
+		This test verifies if the api link localhost/get/{email} return the wanted user as a user form,
+	    it only checks the password and the email.
+	*/
 	@Test
 	void returnUserTest() {
 		BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
@@ -53,10 +55,10 @@ class ServerTests {
 		assertTrue(bCryptPasswordEncoder.matches(u.getPassword(),uTest.getPassword()));
 	}
 
-	/*
+	/**
 		This test verifies if the api link localhost/checkuser/{email} return an "ACCEPTED" Http status code that will be used for
 		 validating the authentication of the client
-	 */
+	*/
 	@Test
 	void validateAuthTest() {
 		User u2=new User();

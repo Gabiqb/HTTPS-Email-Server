@@ -136,9 +136,7 @@
             <div class="emailRow" th:each="mail : ${sentMails}">
                 <div class="emailRow__options">
                     <input type="checkbox" th:attr="value=${mail.id}"/>
-
                 </div>
-
                 <div class="clickable-area" data-toggle="modal" data-target="#viewMailModal"
                      th:attr="
                      data-id=${mail.id},
@@ -149,13 +147,11 @@
                        data-time=${mail.date}
                       ">
                 <h3 class="emailRow__title" th:text="${mail.to}"></h3>
-
                 <div class="emailRow__message">
                     <h3 th:text="${mail.subject}">
 
                     </h3>
                 </div>
-
                 <p class="emailRow__time" th:text="${mail.date}"></p>
             </div>
                 </div>
