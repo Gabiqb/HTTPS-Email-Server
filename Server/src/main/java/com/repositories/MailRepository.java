@@ -17,7 +17,7 @@ public interface MailRepository extends MongoRepository<Mail, String> {
     @Query("{from:'?0',draft:false}")
     List<Mail> findAllMailsBySender(String mail);
 
-    @Query("{to:'?0',draft:true}")
+    @Query("{from:'?0',draft:true}")
     List<Mail> findAllDraftMails(String mail);
 
 
